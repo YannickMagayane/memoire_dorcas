@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1 class="text-3xl font-semibold mb-4">Liste des Départements</h1>
+
+  <a href="{% url 'departement:departement-create' %}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mb-4 inline-block">Créer un Département</a>
+
+  <table class="w-full table-auto">
+    <thead>
+      <tr>
+        <th class="px-4 py-2">Nom du Département</th>
+        <th class="px-4 py-2">Filière</th>
+        <th class="px-4 py-2">Promotion</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for departement in departements %}
+        <tr>
+          <td class="border px-4 py-2">{{ departement.departement }}</td>
+          <td class="border px-4 py-2">{{ departement.filiere }}</td>
+          <td class="border px-4 py-2">{{ departement.promotion }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="3" class="text-center py-4">Aucun département trouvé.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

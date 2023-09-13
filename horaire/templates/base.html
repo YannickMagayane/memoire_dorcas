@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet</title>
+    <!-- Ajoutez ici les liens vers les fichiers CSS, JS ou autres dépendances -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.7/tailwind.min.css">
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <!-- Barre de navigation -->
+    <nav class="bg-blue-500 p-4 text-white">
+    <div class="container mx-auto flex justify-between items-center">
+        <a href="/" class="text-2xl font-semibold">Projet Memoire</a>
+        <ul class="flex space-x-4">
+            {% if user.is_authenticated %}
+            <li><a href="/">Accueil</a></li>
+            <li><a href="{% url 'departement-create' %}">Départements</a></li>
+            <li><a href="{% url 'salles-create' %}">Salles</a></li>
+            <li><a href="{% url 'horaire-create' %}"> Créer Horaire </a></li>
+            {% endif %}
+            <!-- Lien de connexion/déconnexion conditionnel -->
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'deconnexion' %}">Déconnexion</a></li>
+            {% else %}
+                <li><a href="{% url 'connexion' %}">Connexion</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+
+    <!-- Contenu de la page -->
+    <div class="container mx-auto p-4">
+        {% block content %}
+        <!-- Le contenu de la page spécifique sera inséré ici -->
+        {% endblock %}
+    </div>
+
+    <!-- Pied de page -->
+    <footer class="bg-blue-500 p-4 text-white">
+        <div class="container mx-auto text-center">
+            &copy; {{ year }} Votre Entreprise. Tous droits réservés.
+        </div>
+    </footer>
+
+</body>
+</html>

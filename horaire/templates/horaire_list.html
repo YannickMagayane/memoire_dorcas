@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1 class="text-3xl font-semibold mb-4">Liste des Horaires</h1>
+
+  <a href="{% url 'horaire-create' %}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mb-4 inline-block">Créer un Horaire</a>
+
+  <table class="w-full table-auto">
+    <thead>
+      <tr>
+        <th class="px-4 py-2">Jour</th>
+        <th class="px-4 py-2">Heure de Début</th>
+        <th class="px-4 py-2">Heure de Fin</th>
+        <th class="px-4 py-2">Cours</th>
+        <th class="px-4 py-2">Promotion</th>
+        <th class="px-4 py-2">Salle</th>
+        <th class="px-4 py-2">Date de Création</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for horaire in horaires %}
+        <tr>
+          <td class="border px-4 py-2">{{ horaire.jour }}</td>
+          <td class="border px-4 py-2">{{ horaire.heure_debut }}</td>
+          <td class="border px-4 py-2">{{ horaire.heure_fin }}</td>
+          <td class="border px-4 py-2">{{ horaire.cours }}</td>
+          <td class="border px-4 py-2">{{ horaire.promotion }}</td>
+          <td class="border px-4 py-2">{{ horaire.salles }}</td>
+          <td class="border px-4 py-2">{{ horaire.date_creation }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="7" class="text-center py-4">Aucun horaire trouvé.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

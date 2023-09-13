@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1 class="text-3xl font-semibold mb-4">Liste des Salles</h1>
+
+  <a href="{% url 'salles:salles-create' %}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mb-4 inline-block">Créer une Salle</a>
+
+  <table class="w-full table-auto">
+    <thead>
+      <tr>
+        <th class="px-4 py-2">Numéro de Salle</th>
+        <th class="px-4 py-2">Nom de la Salle</th>
+        <th class="px-4 py-2">Promotion</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for salle in salles %}
+        <tr>
+          <td class="border px-4 py-2">{{ salle.numero_salle }}</td>
+          <td class="border px-4 py-2">{{ salle.nom_salle }}</td>
+          <td class="border px-4 py-2">{{ salle.promotion }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="3" class="text-center py-4">Aucune salle trouvée.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
