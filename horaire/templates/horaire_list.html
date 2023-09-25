@@ -2,6 +2,32 @@
 
 {% block content %}
   <h1 class="text-3xl font-semibold mb-4">Liste des Horaires</h1>
+  <form method="GET" action="{% url 'horaire-list' %}">
+    <label for="jour">Jour :</label>
+    <select name="jour" id="jour">
+      <option value="">Tous les jours</option>
+      <option value="lundi">Lundi</option>
+      <option value="mardi">Mardi</option>
+      <option value="mercredi">Mercredi</option>
+      <option value="jeudi">Jeudi</option>
+      <option value="vendredi">Vendredi</option>
+      <option value="samedi">Samedi</option>
+      <option value="dimanche">Dimanche</option>
+    </select>
+
+    <label for="promotion">Promotion :</label>
+    <select name="promotion" id="promotion">
+      <option value="">Toutes les promotions</option>
+      <option value="preparatoire">Preparatoire</option>
+      <option value="bac_1">Bac 1</option>
+      <option value="bac_2">Bac 2</option>
+      <option value="bac_3">Bac 3</option>
+      <option value="master_1">Master 1</option>
+      <option value="master_2">Master 2</option>
+    </select>
+
+    <button type="submit">Filtrer</button>
+  </form>
 
   <a href="{% url 'horaire-create' %}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mb-4 inline-block">Créer un Horaire</a>
 
@@ -27,6 +53,11 @@
           <td class="border px-4 py-2">{{ horaire.promotion }}</td>
           <td class="border px-4 py-2">{{ horaire.salles }}</td>
           <td class="border px-4 py-2">{{ horaire.date_creation }}</td>
+          <td>
+            <a href="{% url 'modifier' horaire.pk %}">
+              Modifier
+            </a>
+          </td>
         </tr>
       {% empty %}
         <tr>

@@ -10,4 +10,5 @@ urlpatterns = [
     path('creer/departement/', views.DepartementCreateView.as_view(), name='departement-create'),
     path('liste/departement/', views.DepartementListView.as_view(), name='departement-list'),
     path('liste/salles', views.SallesListView.as_view(), name='salles-list'),
+    path('horaire/<int:pk>/',views.HoraireUpdate.as_view(),name='modifier'),
 ]

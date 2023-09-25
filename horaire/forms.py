@@ -18,7 +18,7 @@ class SallesForm(forms.ModelForm):
 class DepartementForm(forms.ModelForm):
     class Meta:
         model = Departement
-        fields = ['departement', 'filiere']
+        fields = ['departement', 'filiere','promotion']
 
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user', None)
